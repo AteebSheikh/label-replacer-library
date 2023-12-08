@@ -1,0 +1,22 @@
+{
+  "name": "html-label-replacer-library",
+  "version": "2.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AteebSheikh/label-replacer-library.git"
+  },
+  "keyword": "html-to-json, label-replacer-library",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AteebSheikh/label-replacer-library/issues"
+  },
+  "homepage": "https://github.com/AteebSheikh/label-replacer-library#readme",
+  "dependencies": {
+    "he": "^1.2.0"
+  }
+}
