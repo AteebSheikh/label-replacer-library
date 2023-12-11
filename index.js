@@ -3,15 +3,15 @@ const he = require("he");
 const replaceLabels = (htmlString, labelData) => {
   let modifiedHtml = htmlString;
 
-  const labelRegex = /{{(L\d+)}}/g;
+  const labelRegex = /{{(.*?)}}/g; // Match any content inside {{ }}
 
   modifiedHtml = modifiedHtml.replace(labelRegex, (match, labelId) => {
     const labelText = labelData[labelId];
     if (labelText) {
-      const decodedText = he.decode(labelText);
+      let decodedText = he.decode(labelText);
       const anchorRegex = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/gi;
 
-      modifiedHtml = decodedText.replace(
+      decodedText = decodedText.replace(
         anchorRegex,
         (anchorMatch, quote, href) => {
           if (href && !href.startsWith("http")) {
@@ -22,9 +22,9 @@ const replaceLabels = (htmlString, labelData) => {
         }
       );
 
-      return modifiedHtml;
+      return decodedText;
     }
-    return match;
+    return match; // Return the original label if not found in labelData
   });
 
   // Replace className with class globally in the modifiedHtml
